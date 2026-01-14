@@ -1,4 +1,4 @@
- -- Creating our own dataset
+-- Creating our own dataset
 
 CREATE SCHEMA IF NOT EXISTS analytics_demo;
 
@@ -24,15 +24,13 @@ SELECT * FROM analytics_demo.trends_base;
 -- Creating a partitioned table using data from the base table, partitioned by 'refresh_date'
 
 CREATE TABLE analytics_demo.trends_partitioned
-PARTITION BY DATE(refresh_date) AS
+PARTITION BY refresh_date AS
 SELECT * FROM analytics_demo.trends_base;
 
 
 -- Creating a partitioned and clustered table using data from the base table
 
 CREATE TABLE analytics_demo.trends_partitioned_clustered
-PARTITION BY DATE(refresh_date)
+PARTITION BY refresh_date
 CLUSTER BY country_name, term AS
 SELECT * FROM analytics_demo.trends_base;
-
-
