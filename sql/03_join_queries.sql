@@ -12,10 +12,10 @@ FROM analytics_demo.trends_partitioned;
 
 -- Q13:
 SELECT
-  r.region,
+  cr.region,
   AVG(t.score) AS avg_score
 FROM analytics_demo.trends_partitioned t
-JOIN analytics_demo.country_region r
-ON t.country_name = r.country_name
-GROUP BY r.region
+JOIN analytics_demo.country_region cr
+ON t.country_name = cr.country_name
+GROUP BY cr.region
 ORDER BY avg_score DESC;
